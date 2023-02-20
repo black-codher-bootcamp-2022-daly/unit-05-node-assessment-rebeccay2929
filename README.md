@@ -62,7 +62,7 @@ This will ensure the current starter code is using the `todos.json` in the `mode
 In your code when saving the updated list of todos back to the `todos.json` file, use the following environment variable:
 
 ```javascript
-process.env.BASE_JSON_PATH
+process.env.BASE_JSON_PATHc
 ```
 e.g.
 ```javascript
