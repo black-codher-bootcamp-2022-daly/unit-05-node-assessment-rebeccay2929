@@ -23,13 +23,8 @@ app.get("/", (_, res) => {
   // res.status(200 ).end();
 });
 
-<<<<<<< HEAD
 app.get('/todos', (_, res) => {
   
-=======
-app.get("/todos", (_, res) => {
-  /*
->>>>>>> 857b19606260e1ccf0ced57225b52da0b1e64dcc
   res.header("Content-Type","application/json");
   res.sendFile(todoFilePath, { root: __dirname });
   
