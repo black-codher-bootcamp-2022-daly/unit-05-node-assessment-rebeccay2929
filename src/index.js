@@ -7,8 +7,8 @@ const bodyParser = require("body-parser");
 const { v4: uuidv4 } = require("uuid");
 const { json } = require("express");
 const todoFilePath = process.env.BASE_JSON_PATH;
-const getTodos = () => JSON.parse( fs.readFileSync(path.join(__dirname + todoFilePath))
-);
+
+let todos = require(__dirname + todoFilePath);
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -37,12 +37,14 @@ app.get('/todos', (_, res) => {
 //Add GET request with path '/todos/overdue'
 
 app.get("/todos/overdue", (req, res) => {
-  res.header("Content-Type", "application/json");
-let todos = getTodos().filter(
-  (todo) => !todo.completed && Date.parse(todo.due) < new Date()
+let today = new Date();
+const overdue =todos.filter(
+  (todo) => Date.parse(todo.due) < today && todo.completed === false
+
 );
-res.send(todos);
-})
+res.write(JSON.stringify(overdue));
+res.send();
+});
 
 //Add GET request with path '/todos/completed'
 
