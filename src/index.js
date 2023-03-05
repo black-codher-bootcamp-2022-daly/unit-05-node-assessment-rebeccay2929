@@ -100,16 +100,7 @@ app.patch("/todos/:id", (req, res) => {
         fs.writeFileSync(__dirname + todoFilePath, `${JSON.stringify(todos)}`);
         res.status(200).send("Success");
       }
-      if (req.body.name !== undefined && req.body.due === undefined) {
-        todo.name = req.body.name;
-        fs.writeFileSync(__dirname + todoFilePath, `${JSON.stringify(todos)}`);
-        res.status(200).send("Success");
-      }
-      if (req.body.due !== undefined && req.body.name === undefined) {
-        todo.due = req.body.due;
-        fs.writeFileSync(__dirname + todoFilePath, `${JSON.stringify(todos)}`);
-        res.status(200).send("Success");
-      }
+     
       if (req.body.due === undefined && req.body.name === undefined) {
         res.status(400).send("Invalid request");
       }
